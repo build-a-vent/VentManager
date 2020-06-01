@@ -1,0 +1,11 @@
+export const DEVICE_LIST_NAV = 'DEVIVE_LIST';
+
+export const DEVICE_LIST_NAV_HIDDEN = 'DEVICE_LIST_HIDDEN';
+
+export const DEVICE_DETAIL_NAV = 'DEVICE_DETAIL_NAV';
+
+export const DEVICE_ADJUST_NAV = 'DEVICE_ADJUST_NAV';
+
+export const ABOUT_PAGE = 'ABOUT_PAGE';
+
+export const CREDIT_PAGE = 'CREDITS_PAGE';

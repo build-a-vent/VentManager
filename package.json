@@ -1,0 +1,50 @@
+{
+  "name": "build-a-vent",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "android": "npx react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "npx react-native start",
+    "test": "jest",
+    "debug": "npx react-devtools",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.9.0",
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/native": "^5.1.7",
+    "@react-navigation/stack": "^5.2.14",
+    "buffer": "^5.6.0",
+    "prop-types": "^15.7.2",
+    "react": "16.11.0",
+    "react-native": "0.62.2",
+    "react-native-easy-grid": "^0.2.2",
+    "react-native-gesture-handler": "^1.6.1",
+    "react-native-network-info": "^5.2.1",
+    "react-native-safe-area-context": "^2.0.3",
+    "react-native-screens": "^2.8.0",
+    "react-native-svg-asset-plugin": "^0.3.0",
+    "react-native-udp": "^3.1.0",
+    "react-redux": "^7.2.0",
+    "react-router-native": "^5.1.2",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/runtime": "^7.6.2",
+    "@react-native-community/eslint-config": "^0.0.5",
+    "babel-jest": "^24.9.0",
+    "chance": "^1.1.4",
+    "eslint": "^6.5.1",
+    "jest": "^24.9.0",
+    "metro-react-native-babel-preset": "^0.58.0",
+    "react-test-renderer": "16.11.0"
+  },
+  "browser": {
+    "dgram": "react-native-udp"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}

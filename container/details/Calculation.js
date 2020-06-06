@@ -73,7 +73,7 @@ class Calculation {
       case 'fio2':
         return Math.round(this._fio2 * 100);
       default:
-        return '';
+        return this._active[param];
     }
   }
 }

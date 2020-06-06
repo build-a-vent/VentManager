@@ -21,6 +21,7 @@ import {VENT_LIMITS} from '../../constants/Limits';
 import ConfigMenu from '../menu/Config';
 import {baseStyles} from '../styles/styles';
 import EditMenu from '../../constants/EditMenu';
+import {editText} from '../../constants/EditIfoTexts';
 
 const {height} = Dimensions.get('window');
 
@@ -131,6 +132,7 @@ class AdjustDevice extends React.Component {
     const toValidate = operator[op](value, this.state.step);
 
     const result = this.calculate.validate(this.state.active, toValidate);
+
     if (result.error) {
       this.setErrors(result.error);
     } else {
@@ -151,6 +153,14 @@ class AdjustDevice extends React.Component {
     return current.image;
   }
 
+  getEditText() {
+    if (!editText[this.state.config]) {
+      return null;
+    }
+
+    return <Text style={styles.editText}>{editText[this.state.config]}</Text>;
+  }
+
   render() {
     this.active = this.calculate.setActive(this.props.ventilator);
     this.checkArrowsDisabledState();
@@ -163,6 +173,7 @@ class AdjustDevice extends React.Component {
           <Text style={styles.headline}>{this.props.ventilator.name}</Text>
         </View>
         <View>
+          {this.getEditText()}
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
             style={styles.sectionContainer}>
@@ -205,6 +216,14 @@ const styles = StyleSheet.create({
   sectionContainer: {
     marginTop: 5,
     height: height - 210,
+  },
+  editText: {
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    lineHeight: 20,
+    fontSize: 16,
+    color: 'orange',
   },
 });
 

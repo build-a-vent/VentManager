@@ -76,6 +76,42 @@ class Adjust extends Calculation {
     return {valid: ['ratio']};
   }
 
+  _validateC_lip(value) {
+    if (value >= this._active.c_pip) {
+      return {error: ['c_lip']};
+    }
+
+    this._active.c_lip = value;
+    return {valid: ['c_lip']};
+  }
+
+  _validateC_pip(value) {
+    if (value <= this._active.c_lip) {
+      return {error: ['c_pip']};
+    }
+
+    this._active.c_pip = value;
+    return {valid: ['c_pip']};
+  }
+
+  _validateC_lep(value) {
+    if (value >= this._active.c_pep) {
+      return {error: ['c_lep']};
+    }
+
+    this._active.c_lep = value;
+    return {valid: ['c_lep']};
+  }
+
+  _validateC_pep(value) {
+    if (value <= this._active.c_lep) {
+      return {error: ['c_pep']};
+    }
+
+    this._active.c_pep = value;
+    return {valid: ['c_pep']};
+  }
+
   validate(key, value) {
     switch (key) {
       case 'mv':
@@ -86,6 +122,16 @@ class Adjust extends Calculation {
         return this._validateOxygenContent(value);
       case 'ratio':
         return this._validateRatio(value);
+      case 'c_lip':
+        return this._validateC_lip(value);
+      case 'c_pip':
+        return this._validateC_pip(value);
+      case 'c_lep':
+        return this._validateC_lep(value);
+      case 'c_pep':
+        return this._validateC_pep(value);
+      default:
+        return '';
     }
   }
 }

@@ -119,6 +119,11 @@ class AdjustDevice extends React.Component {
     const currentValue = this.calculate.getValue(this.state.active);
     const limit = limiter(currentValue, VENT_LIMITS[this.state.active]);
 
+    if (this.getEditText() !== null) {
+      this.decreaseDisabled = true;
+      this.increaseDisabled = true;
+      return;
+    }
     this.decreaseDisabled = limit === -1;
     this.increaseDisabled = limit === 1;
   }
@@ -176,7 +181,7 @@ class AdjustDevice extends React.Component {
           {this.getEditText()}
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
-            style={styles.sectionContainer}>
+            style={styles.sectionContainer(this.getEditText())}>
             {VentConfig[this.state.config].map(props => (
               <TouchableHighlight
                 touchSoundDisabled={false}
@@ -213,9 +218,15 @@ AdjustDevice.propTypes = {
 
 const styles = StyleSheet.create({
   ...baseStyles,
-  sectionContainer: {
-    marginTop: 5,
-    height: height - 210,
+  sectionContainer: hasText => {
+    let adjust = 0;
+    if (hasText !== null) {
+      adjust = 50;
+    }
+    return {
+      marginTop: 5,
+      height: height - 210 - adjust,
+    };
   },
   editText: {
     paddingTop: 10,

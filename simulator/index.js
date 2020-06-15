@@ -33,7 +33,7 @@ const getMac = min => {
 };
 
 for (var i = 0; i < vents; i++) {
-  setting.name = `Bett-${i + 1}`;
+  setting.name = `Patient-${i + 1}`;
   setting.mac = getMac(i);
   stack.push(Object.assign({}, setting));
 }

@@ -83,6 +83,7 @@ class Menu extends React.Component {
                   Linking.openURL(url);
                 }
               });
+              9;
             }}>
             <Text style={styles.entry}>Report a Bug</Text>
           </TouchableHighlight>

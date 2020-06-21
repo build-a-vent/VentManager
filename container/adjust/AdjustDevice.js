@@ -50,7 +50,7 @@ class AdjustDevice extends React.Component {
     super(props);
     this.calculate = new Adjust();
     this.state = {
-      config: 'config',
+      config: this.props.route.params.config,
     };
 
     this.errors = [];
@@ -194,7 +194,9 @@ class AdjustDevice extends React.Component {
                   hasError={this.errors.indexOf(props.data) !== -1}
                   isChanged={this.changed.indexOf(props.data) !== -1}
                   value={this.calculate.getValue(props)}
-                  active={this.state.active === props.data}
+                  active={
+                    this.state.active ? this.state.active === props.data : false
+                  }
                 />
               </TouchableHighlight>
             ))}

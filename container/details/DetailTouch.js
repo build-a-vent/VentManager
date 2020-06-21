@@ -20,7 +20,10 @@ const DetailTouchable = props => {
         props.editVentilator(props.mac);
         props.tabSwitch(ADJUST_TAB);
         Vibration.vibrate(200);
-        props.navigation.navigate(DEVICE_ADJUST_NAV, {active: props.data});
+        props.navigation.navigate(DEVICE_ADJUST_NAV, {
+          active: props.data,
+          config: props.config,
+        });
       }}>
       <DetailValue {...props} />
     </TouchableHighlight>

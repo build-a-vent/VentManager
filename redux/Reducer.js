@@ -40,10 +40,6 @@ const reducer = (state = initialState, action) => {
   const payload = action.payload;
   let arrayIndex;
 
-  //if (type !== INSERT_VENTILATOR_BY_BROADCAST) {
-  //  console.log(action, payload);
-  //}
-
   switch (type) {
     case CLEAR_CONFIRMES:
       let outdated = Date.now() - OUTDATED_TIME;
@@ -144,7 +140,6 @@ const reducer = (state = initialState, action) => {
       };
 
     case SAVING_TOGGLE:
-      console.log('saving payload ==>', payload);
       return {
         ...state,
         saveing: payload,
@@ -169,7 +164,6 @@ const reducer = (state = initialState, action) => {
       };
 
     case ACTIVE_VENTILATOR:
-      console.log('active vents');
       return {
         ...state,
         activeVentilator: payload,
@@ -228,7 +222,6 @@ const reducer = (state = initialState, action) => {
       };
 
     default:
-      console.log(`---- cant find action ${type} in reducer ----`);
       return state;
   }
 };

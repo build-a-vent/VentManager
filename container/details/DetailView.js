@@ -61,6 +61,10 @@ class ValueDetail extends React.Component {
       ),
     );
 
+    const globalLong = VentConfig[this.state.config].find(
+      data => data.editable === true,
+    );
+
     return (
       <View style={styles.wrapper}>
         <ConfigMenu onPress={action => this.setState({config: action})} />
@@ -69,6 +73,7 @@ class ValueDetail extends React.Component {
           <Text style={styles.headline}>{this.active.name}</Text>
         </View>
         <TouchableOpacity
+          disabled={!globalLong}
           touchSoundDisabled={false}
           underlayColor={Colors.underlay}
           onLongPress={() => {
@@ -77,6 +82,7 @@ class ValueDetail extends React.Component {
             Vibration.vibrate(200);
             this.props.navigation.navigate(DEVICE_ADJUST_NAV, {
               config: this.state.config,
+              active: globalLong.data,
             });
           }}>
           <ScrollView
@@ -91,6 +97,7 @@ class ValueDetail extends React.Component {
                     value={this.calculate.getValue(props)}
                     navigation={this.props.navigation}
                     mac={this.active.mac}
+                    config={this.state.config}
                   />
                 );
               })}

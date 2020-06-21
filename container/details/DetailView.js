@@ -14,7 +14,6 @@ import {
 } from 'react-native';
 
 import Colors from '../../constants/Colors';
-import {config} from '../../constants/VentilatorData';
 import {DEVICE_ADJUST_NAV} from '../../constants/Navigation';
 import {bindActionCreators} from 'redux';
 import {editVentilator} from '../../redux/actions/EditVentilator';

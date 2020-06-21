@@ -35,6 +35,10 @@ const Supporters = [
     name: 'Miriam',
     job: 'web contents',
   },
+  {
+    name: 'Julia',
+    job: 'web contents',
+  },
 ];
 
 export default Supporters;

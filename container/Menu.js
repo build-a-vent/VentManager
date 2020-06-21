@@ -2,7 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {PropTypes} from 'prop-types';
-import {View, Image, TouchableHighlight, StyleSheet, Text} from 'react-native';
+import {
+  View,
+  Image,
+  TouchableHighlight,
+  StyleSheet,
+  Text,
+  Linking,
+} from 'react-native';
 
 import {
   DEVICE_LIST_NAV_HIDDEN,
@@ -65,6 +72,19 @@ class Menu extends React.Component {
               this.setState({open: false});
             }}>
             <Text style={styles.entry}>Credits</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.menuTouch}
+            underlayColor={Colors.active}
+            onPress={() => {
+              let url = 'https://github.com/build-a-vent/VentManager/issues';
+              Linking.canOpenURL(url).then(supported => {
+                if (supported) {
+                  Linking.openURL(url);
+                }
+              });
+            }}>
+            <Text style={styles.entry}>Report a Bug</Text>
           </TouchableHighlight>
         </View>
       </TouchableHighlight>
@@ -160,7 +180,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
     position: 'absolute',
     width: 200,
-    height: 150,
+    height: 180,
     backgroundColor: Colors.white,
     right: 0,
     top: 0,

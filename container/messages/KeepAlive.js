@@ -1,13 +1,13 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {StyleSheet, View, Image, Text, TouchableHighlight} from 'react-native';
+import { connect } from 'react-redux';
+import { StyleSheet, View, Image, Text, TouchableHighlight } from 'react-native';
 import Colors from '../../constants/Colors';
-import {NETWORK_ERROR, MESSAGES} from '../../constants/Messages';
+import { NETWORK_ERROR, MESSAGES } from '../../constants/Messages';
 import {
   confirmWarnings,
   clearConfirmed,
 } from '../../redux/actions/ConfirmWaring';
-import {bindActionCreators} from 'redux';
+import { bindActionCreators } from 'redux';
 
 class KeepAlive extends React.Component {
   messages = [];
@@ -45,7 +45,7 @@ class KeepAlive extends React.Component {
               : require('../../images/critical.svg')
           }
         />
-        <Text style={styles.message}>{vent.name}</Text>
+        <Text style={styles.message}>{vent.c_name}</Text>
         <Text style={styles.type}>{MESSAGES[type]}</Text>
         <TouchableHighlight
           underlayColor={Colors.underlay}

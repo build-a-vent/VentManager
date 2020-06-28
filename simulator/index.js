@@ -11,7 +11,7 @@ let errorVent;
 const errorTime = Date.now() + 25000; // after 25 seconds vent go in error
 
 if (simNetworkError === true) {
-  errorVent = chance.integer({min: 0, max: vents - 1});
+  errorVent = chance.integer({ min: 0, max: vents - 1 });
 }
 
 console.log(`--- simulate ${vents} vents -----`);
@@ -33,7 +33,7 @@ const getMac = min => {
 };
 
 for (var i = 0; i < vents; i++) {
-  setting.name = `Patient-${i + 1}`;
+  setting.c_name = `Patient-${i + 1}`;
   setting.mac = getMac(i);
   stack.push(Object.assign({}, setting));
 }

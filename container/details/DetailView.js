@@ -1,6 +1,6 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {PropTypes} from 'prop-types';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 
 import {
   StyleSheet,
@@ -14,20 +14,20 @@ import {
 } from 'react-native';
 
 import Colors from '../../constants/Colors';
-import {DEVICE_ADJUST_NAV} from '../../constants/Navigation';
-import {bindActionCreators} from 'redux';
-import {editVentilator} from '../../redux/actions/EditVentilator';
+import { DEVICE_ADJUST_NAV } from '../../constants/Navigation';
+import { bindActionCreators } from 'redux';
+import { editVentilator } from '../../redux/actions/EditVentilator';
 import Arrows from '../adjust/Arrows';
-import {tabSwitch} from '../../redux/actions/Tab';
-import {ADJUST_TAB} from '../../constants/TabName';
+import { tabSwitch } from '../../redux/actions/Tab';
+import { ADJUST_TAB } from '../../constants/TabName';
 import DetailTouchable from './DetailTouch';
 import Calculation from './Calculation';
-import {baseStyles} from '../styles/styles';
+import { baseStyles } from '../styles/styles';
 import * as VentConfig from '../../constants/VentilatorData';
 import EditMenu from '../../constants/EditMenu';
 import ConfigMenu from '../menu/Config';
 
-const {height} = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 class ValueDetail extends React.Component {
   active = null;
@@ -66,10 +66,10 @@ class ValueDetail extends React.Component {
 
     return (
       <View style={styles.wrapper}>
-        <ConfigMenu onPress={action => this.setState({config: action})} />
+        <ConfigMenu onPress={action => this.setState({ config: action })} />
         <View style={styles.iconHeadline}>
           <Image source={this.getCurrentIcon()} style={styles.headlineIcon} />
-          <Text style={styles.headline}>{this.active.name}</Text>
+          <Text style={styles.headline}>{this.active.c_name}</Text>
         </View>
         <TouchableOpacity
           disabled={!globalLong}

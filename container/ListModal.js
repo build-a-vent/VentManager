@@ -1,15 +1,15 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {PropTypes} from 'prop-types';
-import {StyleSheet, View, Modal, Text, Switch} from 'react-native';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import { StyleSheet, View, Modal, Text, Switch } from 'react-native';
+import { bindActionCreators } from 'redux';
 
-import {toggleListModal} from '../redux/actions/ToogleListModal';
+import { toggleListModal } from '../redux/actions/ToogleListModal';
 import SaveButton from './buttons/Save';
 import CancelButton from './buttons/Cancel';
 import Colors from '../constants/Colors';
-import {enableAlarm, disableAlarm} from '../redux/actions/IgnoreAlarm';
-import {removeIgnoreVent, ignoreVent} from '../redux/actions/IgnoreVentilator';
+import { enableAlarm, disableAlarm } from '../redux/actions/IgnoreAlarm';
+import { removeIgnoreVent, ignoreVent } from '../redux/actions/IgnoreVentilator';
 
 class ListModal extends React.Component {
   mac = null;
@@ -65,16 +65,16 @@ class ListModal extends React.Component {
         visible={this.props.listModalVisible}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <View style={{...styles.optionWrapper, ...{height: 50}}}>
+            <View style={{ ...styles.optionWrapper, ...{ height: 50 } }}>
               <View>
-                <Text style={{...styles.label, ...{width: '40%'}}}>Name</Text>
+                <Text style={{ ...styles.label, ...{ width: '40%' } }}>Name</Text>
               </View>
               <View
                 style={{
                   ...styles.switchWrapper,
-                  ...{width: '60%'},
+                  ...{ width: '60%' },
                 }}>
-                <Text>{this.props.name}</Text>
+                <Text>{this.props.c_name}</Text>
               </View>
             </View>
 
@@ -89,7 +89,7 @@ class ListModal extends React.Component {
                 />
               </View>
             </View>
-            <View style={{...styles.optionWrapper, ...{marginTop: 20}}}>
+            <View style={{ ...styles.optionWrapper, ...{ marginTop: 20 } }}>
               <View>
                 <Text style={styles.label}>Alarms</Text>
               </View>
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   optionWrapper: {
     width: '90%',
   },
-  switchWrapper: {position: 'absolute', right: 0, top: -3},
+  switchWrapper: { position: 'absolute', right: 0, top: -3 },
   modalView: {
     margin: 20,
     backgroundColor: 'white',
@@ -186,7 +186,7 @@ const mapStateToProps = state => ({
   ignoreAlarms: state.ignoreAlarms,
   ignoreVentilator: state.ignoreVentilator,
   name: state.ventilatorModal
-    ? state.ventilators.find(data => data.mac === state.ventilatorModal).name
+    ? state.ventilators.find(data => data.mac === state.ventilatorModal).c_name
     : '',
 });
 

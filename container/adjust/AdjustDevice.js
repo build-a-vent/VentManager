@@ -7,23 +7,23 @@ import {
   Dimensions,
   Image,
 } from 'react-native';
-import {connect} from 'react-redux';
-import {PropTypes} from 'prop-types';
+import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import Arrows from './Arrows';
 import Colors from '../../constants/Colors';
 import DetailValue from './DetailValue';
 import * as VentConfig from '../../constants/VentilatorData';
-import {updateVentilator} from '../../redux/actions/UpdateVentilator';
-import {bindActionCreators} from 'redux';
-import {TouchableHighlight} from 'react-native-gesture-handler';
+import { updateVentilator } from '../../redux/actions/UpdateVentilator';
+import { bindActionCreators } from 'redux';
+import { TouchableHighlight } from 'react-native-gesture-handler';
 import Adjust from './Adjust';
-import {VENT_LIMITS} from '../../constants/Limits';
+import { VENT_LIMITS } from '../../constants/Limits';
 import ConfigMenu from '../menu/Config';
-import {baseStyles} from '../styles/styles';
+import { baseStyles } from '../styles/styles';
 import EditMenu from '../../constants/EditMenu';
-import {editText} from '../../constants/EditIfoTexts';
+import { editText } from '../../constants/EditIfoTexts';
 
-const {height} = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 const operator = {
   '-': (base, step) => base - step,
@@ -172,10 +172,10 @@ class AdjustDevice extends React.Component {
 
     return (
       <View>
-        <ConfigMenu onPress={action => this.setState({config: action})} />
+        <ConfigMenu onPress={action => this.setState({ config: action })} />
         <View style={styles.iconHeadline}>
           <Image source={this.getCurrentIcon()} style={styles.headlineIcon} />
-          <Text style={styles.headline}>{this.props.ventilator.name}</Text>
+          <Text style={styles.headline}>{this.props.ventilator.c_name}</Text>
         </View>
         <View>
           {this.getEditText()}

@@ -1,10 +1,10 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {PropTypes} from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { PropTypes } from 'prop-types';
 
-import {selectVentilator} from '../redux/actions/ActiveVentilator';
-import {tabSwitch} from '../redux/actions/Tab';
+import { selectVentilator } from '../redux/actions/ActiveVentilator';
+import { tabSwitch } from '../redux/actions/Tab';
 import {
   StyleSheet,
   View,
@@ -13,12 +13,12 @@ import {
   Image,
   Vibration,
 } from 'react-native';
-import {toggleListModal} from '../redux/actions/ToogleListModal';
+import { toggleListModal } from '../redux/actions/ToogleListModal';
 
 import Colors from '../constants/Colors';
-import {DETAIL_TAB} from '../constants/TabName';
-import {useNavigation} from '@react-navigation/native';
-import {DEVICE_DETAIL_NAV} from '../constants/Navigation';
+import { DETAIL_TAB } from '../constants/TabName';
+import { useNavigation } from '@react-navigation/native';
+import { DEVICE_DETAIL_NAV } from '../constants/Navigation';
 
 const inactiveAlarm = require('../images/inactiveAlarm.svg');
 const activeAlarm = require('../images/activeAlarm.svg');
@@ -47,7 +47,7 @@ const Device = props => {
       }}>
       <View style={styles.sectionContainer}>
         <Image style={styles.bullet} source={image} />
-        <Text style={styles.sectionTitle}>{props.name}</Text>
+        <Text style={styles.sectionTitle}>{props.c_name}</Text>
         <Text style={styles.sectionDescription}>{props.ip}</Text>
       </View>
     </TouchableHighlight>

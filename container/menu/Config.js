@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableHighlight, Image} from 'react-native';
-import {PropTypes} from 'prop-types';
+import { View, Text, StyleSheet, TouchableHighlight, Image } from 'react-native';
+import { PropTypes } from 'prop-types';
 import Colors from '../../constants/Colors';
 import EditMenu from '../../constants/EditMenu';
-import {baseStyles} from '../styles/styles';
+import { baseStyles } from '../styles/styles';
 
 class ConfigMenu extends React.Component {
   constructor(props) {
@@ -26,13 +26,13 @@ class ConfigMenu extends React.Component {
             key={`menu-${data.action}`}
             style={styles.menuTouch}
             onPress={() => {
-              this.setState({open: false});
+              this.setState({ open: false });
               this.props.onPress(data.action);
             }}
             underlayColor={Colors.underlay}>
             <>
               <Image source={data.image} style={styles.icon} />
-              <Text style={styles.menuText}>{data.name}</Text>
+              <Text style={styles.menuText}>{data.c_name}</Text>
             </>
           </TouchableHighlight>
         ))}
@@ -47,7 +47,7 @@ class ConfigMenu extends React.Component {
           style={styles.settingsTouch}
           touchSoundDisabled={false}
           underlayColor={Colors.underlay}
-          onPress={() => this.setState({open: !this.state.open})}>
+          onPress={() => this.setState({ open: !this.state.open })}>
           <Image
             source={require('../../images/cog.svg')}
             style={styles.settingsImage}

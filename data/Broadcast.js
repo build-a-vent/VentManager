@@ -1,9 +1,9 @@
-import {NetworkInfo} from 'react-native-network-info';
+import { NetworkInfo } from 'react-native-network-info';
 import store from '../redux/Store';
-import {insertVentilatorByBroadcast} from '../redux/actions/InsertVentilator';
-import {savingToggle} from '../redux/actions/Saving';
-import {keepAlive} from '../redux/actions/KeepAlive';
-import {errorRemove, errorAdd} from '../redux/actions/Errors';
+import { insertVentilatorByBroadcast } from '../redux/actions/InsertVentilator';
+import { savingToggle } from '../redux/actions/Saving';
+import { keepAlive } from '../redux/actions/KeepAlive';
+import { errorRemove, errorAdd } from '../redux/actions/Errors';
 
 const Buffer = (global.Buffer = global.Buffer || require('buffer').Buffer);
 const dgram = require('dgram');
@@ -12,8 +12,8 @@ const socketType = 'udp4';
 const socketPort = 1111;
 
 const SCAN_CMD = 'scan';
-const SAVE_CMD = 'save';
-const AKK_CMD = 'akk';
+const SAVE_CMD = 'set';
+const AKK_CMD = 'ack';
 
 const retryTime = 100;
 const broadcastInterval = 3000; // seconds to milLiseconds
@@ -47,7 +47,8 @@ class Broadcaster {
 
   receive(msg, rinfo) {
     const data = JSON.parse(msg.toString());
-    const cmd = data.cmd.toLowerCase();
+    const cmd = data.cmd;
+
     if (cmd === SCAN_CMD) {
       return;
     }
@@ -61,7 +62,8 @@ class Broadcaster {
     delete data.req;
 
     store.dispatch(insertVentilatorByBroadcast(data));
-    store.dispatch(keepAlive({[data.mac]: Date.now()}));
+    store.dispatch(keepAlive({ [data.mac]: Date.now() }));
+
   }
 
   getInterfaceIp() {
@@ -124,7 +126,7 @@ class Broadcaster {
       }),
     );
     ++this.sequense;
-    store.dispatch(keepAlive({system: Date.now()}));
+    store.dispatch(keepAlive({ system: Date.now() }));
     this.socket.send(
       buffer,
       0,
@@ -150,7 +152,7 @@ class Broadcaster {
   }
 
   reportError() {
-    store.dispatch(errorAdd({network: errorMessage}));
+    store.dispatch(errorAdd({ network: errorMessage }));
   }
 
   getInterfaceNet() {

@@ -32,7 +32,7 @@ class ConfigMenu extends React.Component {
             underlayColor={Colors.underlay}>
             <>
               <Image source={data.image} style={styles.icon} />
-              <Text style={styles.menuText}>{data.c_name}</Text>
+              <Text style={styles.menuText}>{data.name}</Text>
             </>
           </TouchableHighlight>
         ))}

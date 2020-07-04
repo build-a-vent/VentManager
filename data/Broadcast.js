@@ -20,7 +20,7 @@ const broadcastInterval = 3000; // seconds to milLiseconds
 
 const errorMessage = 'Check your Wifi';
 
-let saveStack = {};
+let saveStack = null;
 
 class Broadcaster {
   ip;
@@ -54,7 +54,8 @@ class Broadcaster {
     }
 
     if (cmd === AKK_CMD) {
-      saveStack = {};
+      data.mac = saveStack.mac;
+      saveStack = null;
       store.dispatch(savingToggle(false));
     }
 
@@ -82,8 +83,9 @@ class Broadcaster {
   }
 
   verifySuccesSend(seq) {
-    if (saveStack[seq]) {
-      this.saveSettingsToVent(saveStack[seq]);
+    5
+    if (saveStack) {
+      this.saveSettingsToVent(saveStack);
     }
   }
 
@@ -95,7 +97,7 @@ class Broadcaster {
         cmd: SAVE_CMD,
         seq: parseInt(`${this.seqPrefix}${this.sequense}`, 10),
       };
-      saveStack[sendData.seq] = sendData;
+      saveStack = sendData;
     } else {
       sendData = data;
     }
